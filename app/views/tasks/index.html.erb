@@ -1,10 +1,23 @@
-<h1>ALL TASKS</h1>
+<br>
+<br>
+<h1>My tasks</h1>
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= link_to task.title, task_path(task) %> <%= link_to "🗑️", task_path(task), method: :delete, data: { confirm: "Are you sure ?"} %>
+    <li>
+    <% if task.completed == true %>
+    <i class="fa-regular fa-square-check"></i>
+    <% else %>
+    <i class="fa-regular fa-square"></i>
+    <% end %>
+    <%= link_to task.title, task_path(task) %>
+    <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure ?"} do%>
+    <i class="fa-solid fa-trash-can"></i>
+    <% end %>
  </li>
 
   <% end %>
 </ul>
 
-<%= link_to "Add new task", new_task_path  %>
+<%= link_to new_task_path  do%>
+<button type="button" class="btn btn-primary">Create new task</button>
+<% end %>
