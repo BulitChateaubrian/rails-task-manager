@@ -1,3 +1,6 @@
+<br>
+<br>
+ <div class="container">
 <h1><%= @task.title %></h1>
 <p><%= @task.details %></p>
   <% if @task.completed == true %>
@@ -8,5 +11,10 @@
 
 
 
-<%= link_to "Edit", edit_task_path %>
-<%= link_to "back", tasks_path  %>
+<%= link_to edit_task_path do%>
+<button type="button" class="btn btn-primary">Edit task</button>
+<% end %>
+<%= link_to tasks_path  do%>
+<button type="button" class="btn btn-info">Back</button>
+<% end %>
+</div>
